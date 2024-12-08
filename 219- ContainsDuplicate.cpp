@@ -1,3 +1,4 @@
+//Question Leetcode link: https://leetcode.com/problems/contains-duplicate-ii/description/?envType=problem-list-v2&envId=sliding-window&difficulty=EASY
 class Solution {
 public:
     bool containsNearbyDuplicate(vector<int>& nums, int k) {
