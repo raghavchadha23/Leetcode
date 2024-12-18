@@ -43,28 +43,6 @@ public:
                 hi = mid;
             }
 
-            /*
-            else if(nums[mid] > nums[hi] && nums[lo] < target) {
-            //if((nums[mid] < target && nums[hi] >= target) || (nums[mid] <= target && nums[hi] > target)) {
-                lo = mid;
-            } 
-            else if(nums[mid] > nums[hi] && nums[hi] > target) {
-                lo = mid;
-            }
-
-            else if(nums[mid] < nums[lo] && nums[hi] > target) {
-                lo = mid;
-            }
-            else if(nums[mid] < nums[lo] && nums[lo] < target) {
-                lo = mid;
-            }
-            else if(nums[mid] < target) {
-                lo = mid; 
-            }
-            else {
-                hi = mid;
-            }
-            */
         }
 
         if(nums[lo] == target) {
