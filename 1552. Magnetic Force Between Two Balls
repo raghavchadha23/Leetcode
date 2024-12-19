@@ -1,0 +1,67 @@
+class Solution {
+public:
+    int tries = 0;
+    bool checkIfCanPlaced(vector<int>& position, int numBalls, int distance) {
+        tries++;
+        int counter = 1;
+        int flag = 0;
+        int storeValueofi = 0;
+        for(int i = 1; i < position.size(); ++i) {
+            if(abs(position[i] - position[storeValueofi]) >= distance) {
+                counter++;
+                flag = 1;
+                storeValueofi = i;
+            }
+            if(counter == numBalls) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    int maxDistance(vector<int>& position, int m) {
+        sort(position.begin(), position.end());
+
+        int lo = 0;
+        int hi = position.size() - 1;
+        int mid;
+        int distance = position[position.size() - 1] - 1;
+        bool previousHappen = false;
+        bool currentHappen = false;
+        int prevDistance;
+        int storedist;
+        bool twoprev = false;
+        while(distance - prevDistance ) {
+            
+            
+
+            previousHappen = currentHappen;
+
+            currentHappen = checkIfCanPlaced(position, m, distance);  
+            if(currentHappen == true && tries == 1) {
+                return distance;
+            }
+            else if (previousHappen == false && currentHappen == false && twoprev == true) {
+                return prevDistance;
+            }
+            prevDistance = distance;
+            mid = (hi + lo) / 2;
+            if(currentHappen == true) {
+                twoprev = true;
+                distance = (distance + storedist) / 2; 
+            }
+            else {
+                twoprev = false;
+                storedist = distance;
+                distance = distance/2;
+            }
+                 
+
+
+
+        }
+        return prevDistance;
+        
+    }
+};
