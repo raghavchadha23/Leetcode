@@ -24,44 +24,25 @@ public:
         sort(position.begin(), position.end());
 
         int lo = 0;
-        int hi = position.size() - 1;
+        int hi = position[position.size() - 1];
         int mid;
-        int distance = position[position.size() - 1] - 1;
-        bool previousHappen = false;
-        bool currentHappen = false;
-        int prevDistance;
-        int storedist;
-        bool twoprev = false;
-        while(distance - prevDistance ) {
-            
-            
+        
+        while((hi - lo) > 1 ) {
+            mid = lo + (hi - lo)/2;
 
-            previousHappen = currentHappen;
-
-            currentHappen = checkIfCanPlaced(position, m, distance);  
-            if(currentHappen == true && tries == 1) {
-                return distance;
-            }
-            else if (previousHappen == false && currentHappen == false && twoprev == true) {
-                return prevDistance;
-            }
-            prevDistance = distance;
-            mid = (hi + lo) / 2;
-            if(currentHappen == true) {
-                twoprev = true;
-                distance = (distance + storedist) / 2; 
+            if(checkIfCanPlaced(position, m, mid)) {
+                lo = mid;
             }
             else {
-                twoprev = false;
-                storedist = distance;
-                distance = distance/2;
+                hi = mid - 1;
             }
-                 
-
-
 
         }
-        return prevDistance;
-        
+        if(checkIfCanPlaced(position, m, hi)) {
+            return hi;
+        }
+        else{
+            return lo;
+        }
     }
 };
